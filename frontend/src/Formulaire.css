@@ -1,0 +1,830 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+/* ============ Design tokens ============ */
+:root {
+  --green: #0a6b3b;
+  --green-dark: #054a29;
+  --green-light: #d9efe2;
+  --gold: #c08a3e;
+  --gold-dark: #a06d29;
+  --gold-light: #e8c98a;
+  --ink: #1c1b17;
+  --muted: #5c564a;
+  --cream: #f7f2e9;
+  --card: #ffffff;
+  --border: #e7ded0;
+  --danger: #c0483e;
+  --success: #3e7d4a;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 20px 45px -20px rgba(34, 32, 28, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Segoe UI", Tahoma, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* ============ Page shell ============ */
+.omra-page {
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 17, 12, 0.72) 0%,
+      rgba(20, 17, 12, 0.55) 40%,
+      rgba(20, 17, 12, 0.15) 75%,
+      rgba(247, 242, 233, 1) 100%
+    ),
+    url("/images/back.png") center 20% / cover no-repeat;
+  padding-bottom: 60px;
+}
+
+/* ---- top bar ---- */
+.omra-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px clamp(20px, 5vw, 64px) 0;
+}
+
+.omra-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.omra-brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #201a10;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.omra-brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.omra-brand-text .name {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+
+.omra-brand-text .tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.omra-contact-pill {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (min-width: 720px) {
+  .omra-contact-pill {
+    display: inline-flex;
+  }
+}
+
+/* ---- hero row ---- */
+.omra-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 20px 0;
+  align-items: start;
+}
+
+@media (min-width: 980px) {
+  .omra-hero {
+    grid-template-columns: 1fr 1.05fr;
+    padding: 90px 40px 0;
+  }
+}
+
+.omra-hero-copy {
+  color: #fff;
+  align-self: center;
+}
+
+.omra-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.omra-eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--gold-light);
+}
+
+.omra-hero-copy h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 4.2vw, 3.1rem);
+  line-height: 1.12;
+  margin: 0 0 18px;
+}
+
+.omra-hero-copy h1 em {
+  font-style: normal;
+  color: var(--gold-light);
+}
+
+.omra-hero-copy p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  max-width: 44ch;
+  margin: 0 0 30px;
+}
+
+.omra-hero-stats {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.omra-hero-stats div strong {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: var(--gold-light);
+}
+
+.omra-hero-stats div span {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============ Card ============ */
+.omra-card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: clamp(20px, 3.5vw, 36px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.omra-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.omra-card-head .icon-badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--green), var(--green-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.omra-card-head h2 {
+  font-family: "Playfair Display", serif;
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+
+.omra-card-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ---- stepper ---- */
+.omra-steps {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.omra-step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.omra-step .dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.omra-step.active .dot,
+.omra-step.done .dot {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.omra-step .label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  display: none;
+}
+
+.omra-step.active .label {
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .omra-step .label {
+    display: block;
+  }
+}
+
+.omra-step .bar {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.omra-step.done .bar {
+  background: var(--green);
+}
+
+/* ============ Section titles inside form ============ */
+.omra-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 26px 0 14px;
+  color: var(--green-dark);
+  font-weight: 700;
+  font-size: 0.97rem;
+}
+
+.omra-section-title:first-child {
+  margin-top: 0;
+}
+
+.omra-section-title .bilingual {
+  margin-left: auto;
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 0.82rem;
+  direction: rtl;
+}
+
+/* ============ Fields ============ */
+.omra-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .omra-grid.cols-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .omra-grid.cols-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.field.disabled {
+  opacity: 0.5;
+}
+
+.field label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 7px;
+  letter-spacing: 0.01em;
+}
+
+.field .control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field .control svg {
+  position: absolute;
+  left: 14px;
+  color: var(--green);
+  width: 17px;
+  height: 17px;
+  pointer-events: none;
+}
+
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="number"],
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px 12px 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+
+.field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--green) 50%),
+    linear-gradient(135deg, var(--green) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) center,
+    calc(100% - 13px) center;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(10, 107, 59, 0.15);
+}
+
+.field input:disabled,
+.field select:disabled {
+  background: #f1ede4;
+  cursor: not-allowed;
+}
+
+.field .hint-rtl {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  direction: rtl;
+  text-align: right;
+}
+
+.field .hint-ltr {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--green-dark);
+  font-weight: 600;
+}
+
+/* readonly duration output */
+.field input[readonly] {
+  background: #f1ede4;
+  color: var(--gold-dark);
+  font-weight: 700;
+  padding-left: 40px;
+}
+
+/* ---- radio (sex) ---- */
+.omra-radio-row {
+  display: flex;
+  gap: 10px;
+}
+
+.omra-radio-chip {
+  flex: 1;
+  position: relative;
+}
+
+.omra-radio-chip input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+
+.omra-radio-chip .chip-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.omra-radio-chip input:checked + .chip-face {
+  border-color: var(--green);
+  background: rgba(10, 107, 59, 0.08);
+  color: var(--green-dark);
+}
+
+/* ---- purpose of travel chips (checkboxes) ---- */
+.omra-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.omra-chip {
+  position: relative;
+}
+
+.omra-chip input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+
+.omra-chip input:disabled {
+  cursor: not-allowed;
+}
+
+.omra-chip .chip-face {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--cream);
+  transition: all 0.2s;
+  text-transform: capitalize;
+}
+
+.omra-chip input:checked + .chip-face {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.omra-chip input:disabled + .chip-face {
+  opacity: 0.4;
+}
+
+/* ============ Photo upload ============ */
+.omra-photo-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.omra-photo-frame {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold-light);
+  flex-shrink: 0;
+  background: var(--cream);
+}
+
+.omra-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.omra-photo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1.5px dashed var(--gold);
+  color: var(--gold-dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: rgba(192, 138, 62, 0.06);
+  cursor: pointer;
+}
+
+.omra-photo-btn input {
+  display: none;
+}
+
+/* ============ Family table ============ */
+.omra-family-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.omra-family-controls .field {
+  max-width: 180px;
+}
+
+.omra-family-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.omra-family-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  background: var(--cream);
+}
+
+.omra-family-card .family-index {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============ Buttons ============ */
+.omra-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.2s;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(10, 107, 59, 0.6);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -10px rgba(10, 107, 59, 0.75);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--green);
+  color: var(--green-dark);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.omra-secure-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.76rem;
+  margin-top: 14px;
+}
+
+/* ============ Status messages ============ */
+.error-message,
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin: 18px 0 0;
+}
+
+.error-message {
+  color: var(--danger);
+  background: rgba(192, 72, 62, 0.1);
+}
+
+.success-message {
+  color: var(--green-dark);
+  background: var(--green-light);
+}
+
+/* ============ Nationality select with flags ============ */
+.nat-select {
+  position: relative;
+  width: 100%;
+}
+
+.nat-select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nat-select-trigger:hover {
+  border-color: var(--green);
+}
+
+.nat-select-trigger svg {
+  color: var(--green);
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+}
+
+.nat-select-trigger span:first-of-type {
+  flex: 1;
+}
+
+.nat-caret {
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg);
+  margin-top: -4px;
+  flex-shrink: 0;
+}
+
+.nat-flag {
+  width: 22px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.nat-select-menu {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  padding: 6px;
+}
+
+.nat-select-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.nat-select-option:hover {
+  background: var(--cream);
+}
+
+.nat-select-option.selected {
+  background: rgba(10, 107, 59, 0.1);
+  color: var(--green-dark);
+  font-weight: 600;
+}
+
+.nat-select-shadow-input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  pointer-events: none;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 640px) {
+  .omra-card {
+    border-radius: 16px;
+  }
+
+  .omra-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .omra-family-controls {
+    align-items: stretch;
+  }
+}
