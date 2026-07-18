@@ -233,7 +233,7 @@ function NationalitySelect({ name, value, onChange, label, icon }) {
   );
 }
 
-export default function Formulaire() {
+export default function Formulaire({ token, onUnauthorized }) {
   const [formData, setFormData] = useState(initialState);
   const [step, setStep] = useState(0); // 0..3 equivalent Div_00 / Div_01 / Div_02 / Div_03
   const [photoFile, setPhotoFile] = useState(null);
@@ -416,8 +416,20 @@ export default function Formulaire() {
 
       const response = await fetch(API_URL, {
         method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
         body: payload,
       });
+
+      if (response.status === 401) {
+        onUnauthorized && onUnauthorized();
+        setStatus({
+          type: "error",
+          message: "Session expirée, merci de vous reconnecter.",
+        });
+        setSubmitting(false);
+        return;
+      }
+
       const result = await response.json();
 
       if (response.ok && result.success) {

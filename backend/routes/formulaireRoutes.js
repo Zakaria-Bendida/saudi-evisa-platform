@@ -20,6 +20,12 @@ const storage = multer.diskStorage({
   },
 });
 
+const requireAuth = require("../middleware/authMiddleware");
+
+router.post("/", requireAuth, createFormulaire);
+router.get("/", requireAuth, getAllFormulaires);
+router.get("/:id", requireAuth, getFormulaireById);
+
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5 Mo max
