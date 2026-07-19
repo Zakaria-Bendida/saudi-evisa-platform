@@ -39,17 +39,42 @@ body {
 
 /* ============ Page shell ============ */
 .omra-page {
+  position: relative;
   min-height: 100vh;
+  padding-bottom: 60px;
+  z-index: 0;
+}
+
+.omra-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background:
     linear-gradient(
       180deg,
       rgba(20, 17, 12, 0.72) 0%,
-      rgba(20, 17, 12, 0.55) 40%,
-      rgba(20, 17, 12, 0.15) 75%,
-      rgba(247, 242, 233, 1) 100%
+      rgba(20, 17, 12, 0.6) 45%,
+      rgba(20, 17, 12, 0.45) 100%
     ),
-    url("/images/back.png") center 20% / cover no-repeat;
-  padding-bottom: 60px;
+    url("/images/back.jpg") center 20% / cover no-repeat;
+}
+
+/* la page principale (longue) reprend une teinte crème en dessous du fond fixe,
+   pour que le bas du formulaire reste lisible sans dependre du degrade du fond */
+.omra-page::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60vh;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 242, 233, 0) 0%,
+    rgba(247, 242, 233, 1) 35%
+  );
 }
 
 /* ---- top bar ---- */
@@ -813,6 +838,57 @@ body {
   margin: 0;
   border: none;
   pointer-events: none;
+}
+
+/* ============ Confirmation screen ============ */
+.omra-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+
+.omra-confirmation-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--green-light);
+  color: var(--green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.omra-confirmation h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
+.omra-confirmation p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 46ch;
+  margin: 0 0 20px;
+}
+
+.omra-confirmation-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: left;
+  max-width: 46ch;
+  margin-bottom: 24px;
 }
 
 /* ============ Responsive ============ */
