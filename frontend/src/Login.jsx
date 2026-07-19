@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Mail, Lock, LogIn, Landmark } from "lucide-react";
 import "./Formulaire.css";
 
-const AUTH_URL = "http://localhost:5000/api/auth/login";
+const AUTH_URL = `${import.meta.env.VITE_API_URL}/api/auth/login`;
 
 export default function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState("");
