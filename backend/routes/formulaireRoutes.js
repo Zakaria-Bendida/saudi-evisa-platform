@@ -6,6 +6,7 @@ const {
   getAllFormulaires,
   getFormulaireById,
 } = require("../controllers/formulaireController");
+const requireAuth = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -20,12 +21,6 @@ const storage = multer.diskStorage({
   },
 });
 
-const requireAuth = require("../middleware/authMiddleware");
-
-router.post("/", requireAuth, createFormulaire);
-router.get("/", requireAuth, getAllFormulaires);
-router.get("/:id", requireAuth, getFormulaireById);
-
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5 Mo max
@@ -35,8 +30,10 @@ const upload = multer({
   },
 });
 
-router.post("/", upload.single("photo"), createFormulaire);
-router.get("/", getAllFormulaires);
-router.get("/:id", getFormulaireById);
+// Une seule definition par route, avec tous les middlewares necessaires :
+// requireAuth (verifie le token) + upload.single (lit le formulaire + la photo)
+router.post("/", requireAuth, upload.single("photo"), createFormulaire);
+router.get("/", requireAuth, getAllFormulaires);
+router.get("/:id", requireAuth, getFormulaireById);
 
 module.exports = router;
