@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import "./Formulaire.css";
 
-const API_URL = "http://localhost:5000/api/formulaire";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/formulaire`;
 
 const NATIONALITES = [
   { code: "DZ", label: "Algérienne" },
