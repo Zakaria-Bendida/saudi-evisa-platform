@@ -57,24 +57,7 @@ body {
       rgba(20, 17, 12, 0.6) 45%,
       rgba(20, 17, 12, 0.45) 100%
     ),
-    url("/images/back.png") center 20% / cover no-repeat;
-}
-
-/* la page principale (longue) reprend une teinte crème en dessous du fond fixe,
-   pour que le bas du formulaire reste lisible sans dependre du degrade du fond */
-.omra-page::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 60vh;
-  bottom: 0;
-  z-index: -1;
-  background: linear-gradient(
-    180deg,
-    rgba(247, 242, 233, 0) 0%,
-    rgba(247, 242, 233, 1) 35%
-  );
+    url("/images/cover.png") center 20% / cover no-repeat;
 }
 
 /* ---- top bar ---- */
