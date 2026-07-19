@@ -57,7 +57,7 @@ body {
       rgba(20, 17, 12, 0.6) 45%,
       rgba(20, 17, 12, 0.45) 100%
     ),
-    url("/images/back.jpg") center 20% / cover no-repeat;
+    url("/images/back.png") center 20% / cover no-repeat;
 }
 
 /* la page principale (longue) reprend une teinte crème en dessous du fond fixe,
