@@ -57,7 +57,7 @@ body {
       rgba(20, 17, 12, 0.6) 45%,
       rgba(20, 17, 12, 0.45) 100%
     ),
-    url("/images/cover.png") center 20% / cover no-repeat;
+    url("/images/back.png") center 20% / cover no-repeat;
 }
 
 /* ---- top bar ---- */
